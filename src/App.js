@@ -1,23 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
 
-function App() {
+import './App.scss';
+import Chat from './compoents/Chat/Chat';
+import ChatList from './compoents/ChatList/ChatList';
+import Header from './compoents/Header/Header';
+import SideNav from './compoents/SideNav/SideNav';
+
+const App = () => {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <SideNav/>
+      <div className='App-Content'>
+      <Header/>
+      <ChatList/>
+      <Chat/>
+      </div>
     </div>
   );
 }
