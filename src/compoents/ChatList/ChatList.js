@@ -3,7 +3,7 @@ import "./chatList.scss";
 import Search from "../../Assets/Svg/Search.svg";
 import ChatContext from "../../Context/ChatContext";
 const ChatList = () => {
-  const { ChatListData } = useContext(ChatContext);
+  const { ChatListData, setSecletedChat } = useContext(ChatContext);
   return (
     <div className="chatList">
       {console.log(ChatListData)}
@@ -15,7 +15,7 @@ const ChatList = () => {
       <ul className="chatList-contacts">
         {ChatListData.map((e, el) => {
           return (
-            <li className="chatList-contacts-item" key={el}>
+            <li className="chatList-contacts-item" key={el} onClick={()=> setSecletedChat(e)}>
               <div className="chatList-contacts-item-person">
                 <img src={e.image} alt={e.name + "image"} />
                 <span
