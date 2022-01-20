@@ -1,8 +1,23 @@
 .App {
   width: 100vw;
+  height: 100vh;
+  min-height: 720px;
   display: flex;
   &-Content{
     width: 100%;
     padding: 20px 20px;
+  }
+  ::-webkit-scrollbar {
+    // Width of vertical scroll bar
+   
+    width: 4px;
+    // Height of horizontal scroll bar
+    height: 10px;
+
+  }
+  ::-webkit-scrollbar-thumb {
+    
+    border-radius: 8px;
+    background: #c2c9d2;
   }
 }

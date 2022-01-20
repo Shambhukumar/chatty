@@ -1,18 +1,22 @@
 
 import './App.scss';
-import Chat from './compoents/Chat/Chat';
-import ChatList from './compoents/ChatList/ChatList';
+import ChatContainer from './compoents/ChatContainer.js/ChatContainer';
 import Header from './compoents/Header/Header';
 import SideNav from './compoents/SideNav/SideNav';
+import { ChatListData } from './Context/chat';
+import { ChatProvide } from './Context/ChatContext';
+
+
 
 const App = () => {
   return (
     <div className="App">
       <SideNav/>
       <div className='App-Content'>
+      <ChatProvide value={{ChatListData}}>
       <Header/>
-      <ChatList/>
-      <Chat/>
+      <ChatContainer/>
+      </ChatProvide>
       </div>
     </div>
   );

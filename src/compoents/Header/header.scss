@@ -3,8 +3,7 @@
    display: flex;
    justify-content: center;
    align-items: center;
-    
-        
+margin-bottom: 4%;
         width: inherit;
         display: flex;
         justify-content: space-between;
@@ -40,6 +39,7 @@
                 justify-content: space-between;
                 img{
                     width: 25px;
+                    cursor: pointer;
                 }
                 &-info{
                     width: 150px;
