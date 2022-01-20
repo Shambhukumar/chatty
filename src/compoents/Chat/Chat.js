@@ -5,42 +5,24 @@ import Cross from "../../Assets/Svg/Cross.svg";
 import Fileupload from "../../Assets/Svg/Fileupload.svg";
 import Send from "../../Assets/Svg/Send.svg";
 import "./chat.scss";
-const messages = [
-  {
-    name: "Esther Howard",
-    messages: `"Hii Prakash !
-  Feels like it’s been a while! How are you? Do you
-  have any time for the remainder of the week to
-  help me with an ongoing  project?`,
-    time: "8:00 AM",
-  },
-  {
-    name: "Prakash",
-    messages: `Hii Easther, glad to hear from you, I’m fine, What
-    about you? and how it’s going with the velocity 
-    website? off cours, I’ll help with this project`,
-    time: "8:01 AM",
-  },
-  {
-    name: "Esther Howard",
-    messages: `Super, I’ll get you the new brief for our own site
-    over to you this evening, so you have time to 
-    read over I’m good thank you!`,
-    time: "8:03 AM",
-  },
-  {
-    name: "Prakash",
-    messages: `Of course I can, just catching up with steve on it
-    and I’ll write out. Speak tomorrow! Let me know 
-    if you have any questions!`,
-    time: "8:05 AM",
-  },
-];
-const Chat = () => {
-  const { selectedChat } = useContext(ChatContext);
-  const [messageData, setmessageData] = useState(messages);
 
-  
+const Chat = () => {
+  const { selectedChat, User, messages } = useContext(ChatContext);
+  const [messageData, setmessageData] = useState(messages);
+  const [currentMessage, setCurrentMessage] = useState();
+
+
+
+  const SendMessage = () =>{
+    if(currentMessage.length){
+      setmessageData((preMessages)=>{
+        return [...preMessages, {name: User.name, messages: currentMessage, time: "9:00 PM"}]
+      })
+      setCurrentMessage("")
+    }
+   
+  }
+
   return (
     <div className="chat">
       <div className="chat-head">
@@ -63,29 +45,38 @@ const Chat = () => {
             return (
               <li
                 className={
-                  e.name === selectedChat.name
-                    ? "chat-body-conversation-selected"
-                    : "chat-body-conversation-me"
+                  e.name === User.name
+                    ? "chat-body-conversation-me"
+                    : "chat-body-conversation-selected"
                 }
               >
-                <img src={selectedChat.image} alt="person img" />
-                <div className={
-                  e.name === selectedChat.name
-                    ? "chat-body-conversation-selected-text"
-                    : "chat-body-conversation-me-text"
-                }>
-                  <span className={
-                  e.name === selectedChat.name
-                    ? "chat-body-conversation-selected-text-msg"
-                    : "chat-body-conversation-me-text-msg"
-                }>
+                <img
+                  src={e.name === User.name ? selectedChat.image : User.image}
+                  alt="person img"
+                />
+                <div
+                  className={
+                    e.name === User.name
+                      ? "chat-body-conversation-me-text"
+                      : "chat-body-conversation-selected-text"
+                  }
+                >
+                  <span
+                    className={
+                      e.name === User.name
+                        ? "chat-body-conversation-me-text-msg"
+                        : "chat-body-conversation-selected-text-msg"
+                    }
+                  >
                     {e.messages}
                   </span>
-                  <span className={
-                  e.name === selectedChat.name
-                    ? "chat-body-conversation-selected-text-time"
-                    : "chat-body-conversation-me-text-time"
-                }>
+                  <span
+                    className={
+                      e.name === User.name
+                        ? "chat-body-conversation-me-text-time"
+                        : "chat-body-conversation-selected-text-time"
+                    }
+                  >
                     {e.time}
                   </span>
                 </div>
@@ -95,10 +86,15 @@ const Chat = () => {
         </ul>
         <div className="chat-body-messageSend">
           <div className="chat-body-messageSend-chatbox">
-            <input type="text" placeholder="Write a message" />{" "}
+            <input
+              type="text"
+              value={currentMessage}
+              placeholder="Write a message"
+              onChange={(e) => setCurrentMessage(e.target.value)}
+            />
             <img src={Fileupload} alt="uploadfile" />
           </div>
-          <span className="chat-body-messageSend-send">
+          <span className="chat-body-messageSend-send" onClick={()=> SendMessage()}>
             <img src={Send} alt="send Message" />
           </span>
         </div>
