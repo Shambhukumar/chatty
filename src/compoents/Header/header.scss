@@ -1,0 +1,68 @@
+.header{
+    width: 100%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+    
+        
+        width: inherit;
+        display: flex;
+        justify-content: space-between;
+        &-left{
+            display: flex;
+            width: 40%;
+            justify-content: space-between;
+            align-items: center;
+            &-Text{
+                font-size: 2rem;
+                font-weight: 500;
+            }
+            &-Filter{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                span{
+                    font-size: 1.2rem;
+                }
+                img{
+                    cursor: pointer;
+                    margin-right: 8px;
+                    padding: 5px;
+                    border-radius: 10px;
+                    background-color: #F4F4F4;
+                }
+            }
+            
+        }
+        &-account{
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                img{
+                    width: 25px;
+                }
+                &-info{
+                    width: 150px;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    margin-left: 40px;
+                    img{
+                        width: 45px;
+                        border-radius: 50%;
+                        object-fit:  contain;
+                    }
+                    &-arrow{
+                        cursor: pointer;
+                        border: solid black;
+                        border-width: 0 3px 3px 0;
+                        display: inline-block;
+                        padding: 3px;
+                        transform: rotate(45deg);
+                        -webkit-transform: rotate(45deg);
+                    }
+                }
+        }
+    
+    
+}

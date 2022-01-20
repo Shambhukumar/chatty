@@ -1,4 +1,8 @@
 .App {
-  width: 100%;
+  width: 100vw;
   display: flex;
+  &-Content{
+    width: 100%;
+    padding: 20px 20px;
+  }
 }
