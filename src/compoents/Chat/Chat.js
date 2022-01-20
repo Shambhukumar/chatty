@@ -3,14 +3,18 @@ import ChatContext from "../../Context/ChatContext";
 import ThreeDots from "../../Assets/Svg/ThreeDots.svg";
 import Cross from "../../Assets/Svg/Cross.svg";
 import Fileupload from "../../Assets/Svg/Fileupload.svg";
+import Back from "../../Assets/Svg/Back.svg";
 import Send from "../../Assets/Svg/Send.svg";
+import { useMediaQuery } from "react-responsive";
 import "./chat.scss";
 
+
 const Chat = () => {
+  const isTabletOrMobile = useMediaQuery({ query: '(max-width: 650px)' })
   const { selectedChat, User, messages } = useContext(ChatContext);
   const [messageData, setmessageData] = useState(messages);
   const [currentMessage, setCurrentMessage] = useState();
-
+ 
 
 
   const SendMessage = () =>{
@@ -24,11 +28,12 @@ const Chat = () => {
   }
 
   return (
-    <div className="chat">
+    <div className={isTabletOrMobile ? "chat-mobile chat": "chat"}>
       <div className="chat-head">
         <div className="chat-head-personinfo">
-          <img src={selectedChat.image} alt={selectedChat.name + "image"} />{" "}
-          <span className="chat-head-personinfo-name">{selectedChat.name}</span>
+         {isTabletOrMobile && <img src={Back} alt="back arrow" className="chat-head-personinfo-back"/>} <img src={selectedChat.image} alt={selectedChat.name + "image"} />{" "}
+          <span className="chat-head-personinfo-name"><span>{selectedChat.name}</span>
+          {(isTabletOrMobile && selectedChat.isOnline) && "Online"} </span>
         </div>
         <div className="chat-head-icons">
           <img
@@ -44,16 +49,19 @@ const Chat = () => {
           {messageData.map((e, el) => {
             return (
               <li
-                className={
-                  e.name === User.name
+                className={`
+                  ${e.name === User.name
                     ? "chat-body-conversation-me"
-                    : "chat-body-conversation-selected"
-                }
-              >
-                <img
-                  src={e.name === User.name ? selectedChat.image : User.image}
+                    : "chat-body-conversation-selected"}
+                    ${isTabletOrMobile && "chat-body-conversation-mobile"}
+
+                
+                `}
+               key={el}>
+               {!isTabletOrMobile && <img
+                  src={e.name !== User.name ? selectedChat.image : User.image}
                   alt="person img"
-                />
+                />}
                 <div
                   className={
                     e.name === User.name

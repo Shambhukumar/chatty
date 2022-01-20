@@ -1,11 +1,14 @@
 .App {
-  width: 100vw;
   height: 100vh;
   min-height: 720px;
   display: flex;
   &-Content{
     width: 100%;
     padding: 20px 20px;
+    &-mobile{
+      width: 100%;
+      padding: 0px;
+    }
   }
   ::-webkit-scrollbar {
     // Width of vertical scroll bar
