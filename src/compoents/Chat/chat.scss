@@ -42,8 +42,10 @@
         justify-content: space-between;
         border-bottom-left-radius: 10px;
         border-bottom-right-radius: 10px;
-        &-message{
-           margin-bottom: 10px;
+       
+        &-messageSend{
+        
+           padding: 5px;
             display: flex;
             justify-content: space-evenly;
             align-items: center;
@@ -80,6 +82,65 @@
                 margin-left: -10%;
                 img{
                     width: 25px;
+                }
+            }
+        }
+        &-conversation{
+            overflow-y: overlay;
+            list-style: none;
+            &-selected{
+                padding: 10px;
+                display: flex;
+                img{
+                    height: 55px;
+                    width: 55px;
+                    border-radius: 50%;
+                    object-fit: cover;
+                }
+                &-text{
+                    padding: 10px;
+                    border-radius: 0px 15px 15px 15px;
+                    background-color: #F4F4F4;
+                    display: flex;
+                    flex-direction: column;
+                    margin-left: 20px;
+                    margin-top: 20px;
+                    width: 50%;
+                     &-time{
+                         font-size: 0.9rem;
+                         margin-top: 5px;
+                        text-align: right;
+                        color: rgb(161, 161, 161);
+                }
+                }
+               
+            }
+
+            &-me{
+                padding: 10px;
+                display: flex;
+                flex-direction: row-reverse;
+                img{
+                    height: 55px;
+                    width: 55px;
+                    border-radius: 50%;
+                    object-fit: cover;
+                }
+                &-text{
+                    padding: 15px;
+                    border-radius: 25px 0px 25px 25px;
+                    background-color: #B4DFE580;
+                    display: flex;
+                    flex-direction: column;
+                    margin-right: 20px;
+                    margin-top: 20px;
+                    width: 50%;
+                     &-time{
+                        font-size: 0.9rem;
+                        margin-top: 5px;
+                        text-align: left;
+                        color: rgb(161, 161, 161);
+                    }
                 }
             }
         }
